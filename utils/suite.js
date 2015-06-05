@@ -1,9 +1,10 @@
 var outer = document.getElementById('log');
 
-function log(str) {
-  outer.innerHTML += '<p>' + str + '</p>';
+function log() {
+   var args = Array.prototype.slice.call(arguments);
+  outer.innerHTML += '<p>' + args.join(' - ') + '</p>';
 }
-
+console.time('suite');
 var suite = function(name, tests) {
   log('#' + name);
 
@@ -17,10 +18,9 @@ var suite = function(name, tests) {
     log(String(event.target));
   });
   suite.on('complete', function() {
-    log('Fastest is ' + this.filter('fastest').pluck('name'));
+    console.timeEnd('suite');
+    log('Fastest is <b>' + this.filter('fastest').pluck('name') + '</b>');
   });
 
-  suite.run({
-    'async': true
-  });
+  suite.run();
 };

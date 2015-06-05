@@ -65,6 +65,9 @@ gulp.task('init', ['xtpl', 'tpl'], function() {
 
   var suiteCode = '';
   for (var i in tplFiles) {
+    if (i.indexOf('Test') === -1) {
+      continue;
+    }
     if (tplFiles.hasOwnProperty(i) && xtplFiles.hasOwnProperty(i)) {
       suiteCode += '\n/* #'+ i + '*/'
       suiteCode += 'var ' + i + 'tplRender = ' + 'require("' + tplFiles[i] + '");'
@@ -79,18 +82,24 @@ gulp.task('init', ['xtpl', 'tpl'], function() {
   }
 
   var jsContent = header + suiteCode + footer;
-
   fs.writeFileSync('./init.js', beautify.beautifyJs(jsContent), 'utf-8');
 })
 
 function generatorSuite(name) {
-  var template = 'suite("<%= name %>", {"kissy": function() {<%= name %>tplRender.render(<%= name %>Data) }, "xtemplate": function() {<%= name %>xtplRender.render(<%= name %>Data) } });'
+  var lowName = unCamelCase(name)
+  var template = 'suite("<%= lowName %>", {"kissy": function() {<%= name %>tplRender.render(<%= name %>Data) }, "xtemplate": function() {<%= name %>xtplRender.render(<%= name %>Data) } });'
 
   return _.template(template)({
-    name: name
+    name: name,
+    lowName: lowName
   })
 }
 
+function unCamelCase(str) {
+  return str.replace(/[A-Z]/g, function(s) {
+    return '-' + s.toLowerCase();
+  });
+}
 
 gulp.task('default', ['clean'], function() {
   gulp.start(['init'])
