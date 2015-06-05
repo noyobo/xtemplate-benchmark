@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>xtemplate vs xtpl.html</title>
+  <script type="text/javascript" src="//g.alicdn.com/kissy/k/1.4.16/seed.js"></script>
+  <script type="text/javascript" src="./node_modules/lodash/index.js?noWarp"></script>
+  <script type="text/javascript" src="./node_modules/platform/platform.js?noWarp"></script>
+  <script type="text/javascript" src="./node_modules/benchmark/benchmark.js?noWarp"></script>
+  <style type="text/css">
+  *{padding: 0; margin: 0;}
+  div{
+    padding: 10px;
+    font: 14px/22px Consolas,Monaco,'Andale Mono',monospace;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="log"></div>
+  <script type="text/javascript">
+  KISSY.config({
+    packages: [{
+      name: 'build',
+      path: '/build/',
+      tag: 'noWarp',
+      ignorePackageNameInUri: true
+    }]
+  });
+  </script>
+  <script type="text/javascript" src="./utils/suite.js?noWarp"></script>
+  <script type="text/javascript" src="data.js?noWarp"></script>
+  <script type="text/javascript" src="init.js?noWarp"></script>
+</body>
+
+</html>

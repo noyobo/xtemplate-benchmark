@@ -1,0 +1,3 @@
+var ifTestData = {
+  a: true
+}
