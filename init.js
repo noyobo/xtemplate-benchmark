@@ -78,6 +78,19 @@ KISSY.add('init', function (S, require, module, exports) {
             includeTestxtplRender.render(includeTestData)
         }
     }); /* #includeTestend */
+    /* #listTest*/
+    var listTesttplRender = require("build/tpl/list-test.js");
+    var listTestxtplRender = require("build/xtpl/list-test.js");
+    listTesttplRender = new kissyXtemplate(listTesttplRender);
+    listTestxtplRender = new nodeXtemplate(listTestxtplRender);
+    suite("list-test", {
+        "kissy": function () {
+            listTesttplRender.render(listTestData)
+        },
+        "xtemplate": function () {
+            listTestxtplRender.render(listTestData)
+        }
+    }); /* #listTestend */
     /* #unescapedTest*/
     var unescapedTesttplRender = require("build/tpl/unescaped-test.js");
     var unescapedTestxtplRender = require("build/xtpl/unescaped-test.js");

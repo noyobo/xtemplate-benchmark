@@ -1,0 +1,23 @@
+<div class="m-itemlist" data-spm="{{spmModId}}">
+  <div {{#if isSameStyleView}}class="samestyle-view"{{/if}}>
+    <div class="list">
+      <div class="items g-clearfix">
+        {{#auctions}}
+          {{{include './list-item' trace=(../trace)}}}
+        {{/auctions}}
+
+        {{! 推荐宝贝 }}
+        {{#recommendText}}
+          <div class="recommend-box g-clearfix">
+            <p class="recommend-tip">{{{recommendText}}}</p>
+          </div>
+        {{/recommendText}}
+
+        {{#recommendAuctions}}
+          {{{include './list-item' trace=(../recommendTrace)}}}
+        {{/recommendAuctions}}
+
+      </div>
+    </div>
+  </div>
+</div>

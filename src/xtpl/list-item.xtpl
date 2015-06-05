@@ -1,0 +1,153 @@
+<div class="item g-clearfix">
+  <div class="col col-1">
+    <div class="pic-box J_MouseEneterLeave J_PicBox">
+      <div class="pic-box-inner">
+        <div class="pic J_MouseEneterLeave J_ThumbPopup" data-pic="{{pic_url}}">
+          <a class="pic-link J_U2IStat" data-nid="{{nid}}" href="{{detail_url}}" target="_blank" trace="{{trace}}" traceidx="{{xindex}}" trace-pid="{{pid}}">
+            {{#if (xindex < 8)}}
+              <img class="img" src="{{_pic_url}}" alt="{{raw_title}}" />
+            {{else}}
+              <img class="img" data-ks-lazyload="{{_pic_url}}" alt="{{raw_title}}" />
+            {{/if}}
+          </a>
+        </div>
+
+        {{{include ('./i2ibtn')}}}
+
+        <div class="report">
+          <a href="//archer.taobao.com/myservice/report/entry.htm?Query={{../query}}&auction_num_id={{nid}}&fromSource=search&Category=0&sort=all&display_type=3" target="_blank" title="举报该宝贝">
+            <span class="icon-btn-report"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col col-2">
+    <p class="title">
+      <a class="J_U2IStat" data-nid="{{nid}}" href="{{detail_url}}" target="_blank" trace="{{trace}}" traceidx="{{xindex}}" trace-pid="{{pid}}">{{{title}}}</a>
+    </p>
+
+    <div class="main-icons icon-has-more" id="J_Itemlist_Icons_{{nid}}">
+      <ul class="icons">
+        {{#each (icon.mainIcons)}}
+          <li class="icon">
+            {{#if (html)}}
+              {{{html}}}
+            {{else}}
+              <a href="{{url}}" target="_blank" title="{{title}}"
+                 trace="{{trace}}" traceidx="{{traceIdx}}"><span class="{{dom_class}}"></span></a>
+            {{/if}}
+          </li>
+        {{/each}}
+      </ul>
+
+      <div class="more J_MouseEneterLeave J_IconMore">
+        <span class="arrow"></span>
+      </div>
+    </div>
+
+    <div class="misc">
+      <div class="shop">
+        {{{include ('./shoplink')}}}
+      </div>
+
+      {{#if (nick)}}
+        {{#if (isHideIM)}}
+        {{else}}
+          <div class="wangwang">
+            <span class="J_WangWang" data-nick="{{nick}}" data-display="inline" data-item="{{nid}}"
+                  data-icon="small" data-encode="true"></span>
+          </div>
+        {{/if}}
+      {{/if}}
+
+      <div class="location">{{item_loc}}</div>
+    </div>
+
+  </div>
+
+  <div class="col col-3">
+
+    <div>
+      <span class="price g_price g_price-highlight">
+        <span>&yen;</span><strong>{{view_price}}</strong>
+      </span>
+      {{#if (view_fee==="0.00" && !isHideFreePrice)}}
+        <span class="ship icon-service-free"></span>
+      {{/if}}
+    </div>
+
+    {{#if (view_fee!=="0.00" && !isHideFreePrice)}}
+      {{#if (view_fee!=='')}}
+        <div class="ship">{{../postFeeText}}: {{view_fee}}</div>
+      {{/if}}
+    {{/if}}
+
+    <ul class="etc-icons">
+      {{#each (icon.etcIcons)}}
+        <li class="icon">
+          {{#if (html)}}
+            {{{html}}}
+          {{else}}
+            <a href="{{url}}" class="icon-btn" target="_blank" title="{{title}}"
+               trace="{{trace}}" traceidx="{{traceIdx}}"><span class="icon {{dom_class}}"></span>{{innerText}}</a>
+          {{/if}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+
+  <div class="col col-4">
+    <p class="deal-cnt">{{view_sales}}</p>
+    {{#if (comment_count)}}
+      <p>
+        <a class="comment" href="{{comment_url}}" target="_blank">{{comment_count}}条评论</a>
+      </p>
+    {{/if}}
+  </div>
+
+  <div class="col col-5">
+    <ul class="service-icons">
+      {{#each (icon.serviceIcons)}}
+        {{#if (xindex<3)}}
+        <li>
+          {{#if (html)}}
+            {{{html}}}
+          {{else}}
+            <a href="{{url}}" class="icon-btn" target="_blank" title="{{title}}"
+               trace="{{trace}}" traceidx="{{traceIdx}}"><span class="icon {{dom_class}}"></span>{{innerText}}</a>
+          {{/if}}
+        </li>
+        {{/if}}
+      {{/each}}
+    </ul>
+
+    <ul class="service-icons">
+      {{#each (icon.serviceIcons)}}
+        {{#if (xindex >= 3)}}
+          <li>
+            {{#if (html)}}
+              {{{html}}}
+            {{else}}
+              <a href="{{url}}" class="icon-btn" target="_blank" title="{{title}}"
+                 trace="{{trace}}" traceidx="{{traceIdx}}"><span class="icon {{dom_class}}"></span>{{innerText}}</a>
+            {{/if}}
+          </li>
+        {{/if}}
+      {{/each}}
+    </ul>
+
+    {{! 合并同款下才展示 }}
+    {{#if (sameStyleCount)}}
+      <div class="samestyle">
+        {{#if (sameStyleCount>1)}}
+          <a class="samestyle-btn samestyle-link" target="_blank" href="/search?type=samestyle&app=i2i&rec_type=&uniqpid={{pid}}&nid={{nid}}">我要比价</a>
+          <p class="samestyle-txt">{{sameStyleCount}}家店铺在售</p>
+        {{else}}
+          <a class="samestyle-btn buy" target="_blank" href="{{detail_url}}">我要购买</a>
+        {{/if}}
+      </div>
+    {{/if}}
+  </div>
+</div>

@@ -1,0 +1,19 @@
+{{! 店铺名称 }}
+{{#if (!isHideNick)}}
+  {{#if (isHideShopLink)}}
+    <span class="shopname shopname-text">{{nick}}</span>
+  {{else}}
+    {{#if (shopcard)}}
+      <a class="shopname J_MouseEneterLeave J_ShopInfo" data-userid="{{user_id}}" data-nid="{{nid}}" href="{{shopLink}}" target="_blank">
+        <span class="dsrs">
+          {{#each (shopcard.dsrClass)}}
+            <span class="dsr {{this}}"></span>
+          {{/each}}
+        </span>
+        <span>{{nick}}</span>
+      </a>
+    {{else}}
+      <a class="shopname" href="{{shopLink}}" target="_blank">{{nick}}</a>
+    {{/if}}
+  {{/if}}
+{{/if}}

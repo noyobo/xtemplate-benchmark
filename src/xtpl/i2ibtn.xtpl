@@ -1,0 +1,27 @@
+{{#if (i2iTags)}}
+  <div class="similars">
+    <a class="btn {{#if (!i2iTags.samestyle.url)}}disabled{{/if}}" target="_blank"
+       {{#if (i2iTags.samestyle.url)}}
+         href="{{i2iTags.samestyle.url}}"
+         {{#if (i2iTags.samestyle.trace)}}
+           trace="{{i2iTags.samestyle.trace}}"
+         {{/if}}
+       {{/if}}>
+        <s class="shim"></s>
+        <s class="bar"></s>
+        <span class="text">找同款</span>
+    </a>
+
+    <a class="btn {{#if (!i2iTags.similar.url)}}disabled{{/if}}" target="_blank"
+       {{#if (i2iTags.similar.url)}}
+         href="{{i2iTags.similar.url}}"
+         {{#if (i2iTags.similar.trace)}}
+           trace="{{i2iTags.similar.trace}}"
+         {{/if}}
+       {{/if}}>
+        <s class="shim"></s>
+        <span class="text">找相似</span>
+    </a>
+  </div>
+{{/if}}
+
