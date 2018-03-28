@@ -1,5 +1,7 @@
 # kissy.xtemplate vs xtemplate 
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/noyobo/xtemplate-benchmark.svg)](https://greenkeeper.io/)
+
 ```
 #each-obj-test
 kissy x 132,245 ops/sec ±5.82% (69 runs sampled)
